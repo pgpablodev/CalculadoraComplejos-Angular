@@ -1,7 +1,6 @@
 {
   "name": "calculadora-complejos",
   "version": "0.0.0",
-  "homepage": ".",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
