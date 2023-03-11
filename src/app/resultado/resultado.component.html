@@ -1,0 +1,17 @@
+<div *ngIf="mostrar" style="text-align: center; margin-top: 100px;">
+    <h1>Resultado</h1>
+    <div *ngIf="complejo.getForma()==='b';else displayPolar">
+        <div class="grid" style="text-align: left;"><h2>Forma binómica:</h2><input value="{{complejo.imprimir()}}" readonly></div>
+        <div class="grid" style="text-align: left;"><h2>Forma polar:</h2><input value="{{complejo.copiaCambioForma().imprimir()}}" readonly></div>
+        <div class="grid" style="text-align: left;"><h2>Conjugado:</h2><input value="{{complejo.conjugado().imprimir()}}" readonly></div>
+        <div class="grid" style="text-align: left;"><h2>Opuesto:</h2><input value="{{complejo.opuesto().imprimir()}}" readonly></div>
+    </div>    
+    <ng-template #displayPolar>
+        <div>
+            <div class="grid" style="text-align: left;"><h2>Forma binómica:</h2><input value="{{complejo.copiaCambioForma().imprimir()}}" readonly></div>
+            <div class="grid" style="text-align: left;"><h2>Forma polar:</h2><input value="{{complejo.imprimir()}}" readonly></div>
+            <div class="grid" style="text-align: left;"><h2>Conjugado:</h2><input value="{{complejo.conjugado().imprimir()}}" readonly></div>
+            <div class="grid" style="text-align: left;"><h2>Opuesto:</h2><input value="{{complejo.opuesto().imprimir()}}" readonly></div>
+        </div>
+    </ng-template>    
+</div>
