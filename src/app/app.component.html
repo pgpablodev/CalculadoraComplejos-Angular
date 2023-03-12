@@ -8,8 +8,8 @@
     <input *ngIf="f1.value === '0: b';else simboloPolar" readonly type="text" value="+" style="text-align: center; border: none;">
     <ng-template #simboloPolar><input readonly type="text" value="∟" style="text-align: center; border: none;"></ng-template>
     <input type="number" step="0.01" id="complejo1_n2" [(ngModel)]="c1_n2">
-    <div *ngIf="f1.value === '0: b';else simboloGrado" style="margin-top: 16px;">i</div>
-    <ng-template #simboloGrado><div style="margin-top: 16px;">º</div></ng-template>
+    <div *ngIf="f1.value === '0: b';else simboloGrado" style="margin-top: 16px;" class="simbolo">i</div>
+    <ng-template #simboloGrado><div style="margin-top: 16px;" class="simbolo">º</div></ng-template>
     <select #f1 [(ngModel)]="forma1">
       <option selected value="b" [ngValue]="'b'">Binómica</option>
       <option value="p" [ngValue]="'p'">Polar</option>
@@ -21,8 +21,8 @@
     <input *ngIf="f2.value === '0: b';else simboloPolar" readonly type="text" value="+" style="text-align: center; border: none;">
     <ng-template #simboloPolar><input readonly type="text" value="∟" style="text-align: center; border: none;"></ng-template>
     <input type="number" step="0.01" id="complejo2_n2" [(ngModel)]="c2_n2">
-    <div *ngIf="f2.value === '0: b';else simboloGrado" style="margin-top: 16px;">i</div>
-    <ng-template #simboloGrado><div style="margin-top: 16px;">º</div></ng-template>
+    <div *ngIf="f2.value === '0: b';else simboloGrado" style="margin-top: 16px;" class="simbolo">i</div>
+    <ng-template #simboloGrado><div style="margin-top: 16px;" class="simbolo">º</div></ng-template>
     <select #f2 [(ngModel)]="forma2">
       <option selected value="b" [ngValue]="'b'">Binómica</option>
       <option value="p" [ngValue]="'p'">Polar</option>
