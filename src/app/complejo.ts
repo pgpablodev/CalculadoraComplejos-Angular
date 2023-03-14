@@ -116,6 +116,35 @@ export class Complejo{
             return new Complejo(this.n1/c.n1,this.n2-c.n2,'p');
     }
 
+    potenciaNesima(n: number){
+		if(n>=0){
+			if(this.forma==='b') this.cambioForma();
+			return new Complejo(Math.pow(this.n1,n),this.n2*n,'p');
+		}
+		return new Complejo(0,0,'b');
+	}
+
+    raizNesima(n: number){
+		if(n>=2){
+			let raices = [];
+			if(this.forma==='b') this.cambioForma();
+			let unidadImag = new Complejo(0,1,'b');	
+            let angulo = toRadians(this.n2)	
+			for(let i=0;i<n;i++){
+				let aux = new Complejo(Math.pow(Math.E, (angulo+2*i*Math.PI)/n),0,'b');
+				let miembro1 = new Complejo(Math.cos((angulo+2*i*Math.PI)/n),0,'b').divComplejo(aux.prodComplejo(unidadImag));
+				let miembro2 = new Complejo(Math.sin((angulo+2*i*Math.PI)/n),0,'b').divComplejo(aux.prodComplejo(unidadImag)).prodComplejo(unidadImag);
+				miembro1.n1 = aux.n1
+                miembro2.n1 = aux.n1
+                let resultado = miembro1.sumaComplejo(miembro2)
+                if(resultado.forma==='p') resultado.cambioForma()
+                raices.push(resultado)                
+			}
+			return raices;
+		}
+		return [];
+	}
+
     conjugado(){
         if(this.forma==='p')
             this.cambioForma();

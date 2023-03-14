@@ -36,6 +36,42 @@
     <input style="background-color: #1500d7; border-color: #10009e;" type="button" value="Dividir" (click)="calcular('d')">
   </div>
 
-  <app-resultado [mostrar]="hayResultado" [complejo]="c3"></app-resultado>
-  <div *ngIf="hayResultado" style="text-align: center; margin-bottom: 100px;"><canvas width="400" height="400" id="plano"></canvas></div>  
+  <div class="grid">
+    <div></div>
+    <div class="grid">
+      <input class="secondary" type="button" value="Potencia" (click)="calcular('p')">
+      <input type="number" min="0" step="1" [(ngModel)]="exponenteP" value="0">
+    </div>
+    <div class="grid">
+      <input type="button" value="Raíces" (click)="calcular('rz')">
+      <input type="number" min="2" step="1" [(ngModel)]="exponenteRz" value="2">
+    </div>
+    <div></div>
+  </div>
+
+  <app-resultado [mostrar]="hayResultado" [complejo]="c3" [raices]="raices" [operacion]="opSeleccionada" [c1]="c1"></app-resultado>
+  <div *ngIf="hayResultado" class="grid" style="text-align: center; margin-bottom: 100px;">
+    <div></div>
+    <canvas width="400" height="400" id="plano"></canvas>
+    <div *ngIf="opSeleccionada!=='rz';else leyendaRaices" style="text-align: right;" class="headings">      
+      <p>Leyenda</p>
+      <p *ngIf="c1.getForma()==='b';else imprimePolar" style="color: #970103;">{{c1.imprimir()}}</p>
+      <ng-template #imprimePolar><p style="color: #970103;">{{c1.copiaCambioForma().imprimir()}}</p></ng-template>
+      <p id="segundoLeyenda" *ngIf="c2.getForma()==='b';else imprimePolar" style="color: #d5a100;">{{c2.imprimir()}}</p>
+      <ng-template #imprimePolar><p id="segundoLeyenda" style="color: #d5a100;">{{c2.copiaCambioForma().imprimir()}}</p></ng-template>
+      <p *ngIf="c3.getForma()==='b';else imprimePolar" style="color: #0b9a02;">{{c3.imprimir()}}</p>    
+      <ng-template #imprimePolar><p style="color: #0b9a02;">{{c3.copiaCambioForma().imprimir()}}</p></ng-template> 
+    </div>
+    <ng-template #leyendaRaices>
+      <div style="text-align: right;" class="headings">      
+        <p>Leyenda</p>
+        <p *ngIf="c1.getForma()==='b';else imprimePolar" style="color: #fff;">{{c1.imprimir()}}</p>
+        <ng-template #imprimePolar><p style="color: #fff;">{{c1.copiaCambioForma().imprimir()}}</p></ng-template>
+        <hgroup *ngFor="let raiz of raices">
+          <h6 *ngIf="c1.getForma()==='b';else imprimePolar" style="color: #1095C1;">{{raiz.imprimir()}}</h6>
+          <ng-template #imprimePolar><h6 style="color: #1095C1;">{{raiz.copiaCambioForma().imprimir()}}</h6></ng-template>
+        </hgroup>
+      </div>  
+    </ng-template>
+  </div>  
 </main>

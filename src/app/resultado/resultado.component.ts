@@ -9,4 +9,7 @@ import { Complejo } from '../complejo';
 export class ResultadoComponent {
   @Input() mostrar: boolean;
   @Input() complejo: Complejo;  
+  @Input() raices: Complejo[];
+  @Input() operacion: String;
+  @Input() c1: Complejo;
 }
